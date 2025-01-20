@@ -1,0 +1,77 @@
+# AppilixNotifications
+
+`AppilixNotifications` is a Ruby gem crafted to streamline the process of sending push notifications via the Appilix API. It offers a user-friendly interface to dispatch notifications with customizable parameters such as title, body, user identity, and links. This gem leverages the capabilities of Appilix, a platform that enables the transformation of any website into a mobile application without requiring any coding. Developed by Alzahidi-tech, this gem ensures efficient notification management.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'appilix_notifications'
+```
+
+Then run:
+
+```sh
+bundle install
+```
+
+## Usage
+
+### Sending a Notification
+
+To send a notification, use the `appilix_send_notifications` method:
+
+```ruby
+require 'appilix_notifications'
+
+response = AppilixNotifications.appilix_send_notifications(
+  'your_app_key',
+  'your_api_key',
+  'Your Notification Title',
+  'Your Notification Body',
+  'optional_user_identity', # Optional
+  'https://example.com'     # Optional
+)
+
+puts response
+```
+
+### Parameters
+
+- `app_key` (String): Your application's key from Appilix.
+- `api_key` (String): Your API key from Appilix.
+- `title` (String): The title of the notification.
+- `body` (String): The body content of the notification.
+- `user_identity` (String, optional): The user identifier for the notification.
+- `open_link_url` (String, optional): A URL to open when the notification is clicked.
+
+### Example Response
+
+On success, the method returns a parsed JSON response:
+
+```json
+{
+  "status": "success",
+  "message": "Notification sent successfully"
+}
+```
+
+On failure, the method returns an error hash:
+
+```json
+{
+  "error": "Invalid API key",
+  "code": "401",
+  "body": "The provided API key is incorrect."
+}
+```
+
+If the server response contains invalid JSON, you will receive:
+
+```json
+{
+  "error": "Invalid JSON response",
+  "body": "<Raw response body>"
+}
+```
