@@ -8,4 +8,19 @@ RSpec.describe AppilixNotifications do
     expect(response).to be_a(Hash)
     expect(response['status']).to eq('true')
   end
+
+  it 'fetches registered user tokens successfully with a valid page' do
+    response = AppilixNotifications.appilix_registered_user_tokens(
+      AppilixNotifications::APP_KEY, AppilixNotifications::API_KEY, 1)
+
+    expect(response).to be_a(Hash)
+    expect(response).to have_key('tokens')
+    puts response
+  end
+
+  it 'raises an error when page is missing for registered user tokens' do
+    expect {
+      AppilixNotifications.appilix_registered_user_tokens(AppilixNotifications::APP_KEY, AppilixNotifications::API_KEY, nil)
+    }.to raise_error(ArgumentError, 'Page parameter is mandatory')
+  end
 end
