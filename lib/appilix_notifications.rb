@@ -33,7 +33,7 @@ module AppilixNotifications
     handle_response(response)
   end
 
-  def appilix_registered_user_tokens(app_key, api_key, page)
+  def appilix_get_registered_user(app_key, api_key, page)
     raise ArgumentError, "Page parameter is mandatory" unless page
 
     uri = URI("#{BASE_URL}/#{TOKEN_LIST_URL}")

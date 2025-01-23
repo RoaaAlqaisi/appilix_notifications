@@ -36,24 +36,7 @@ response = AppilixNotifications.appilix_send_notifications(
 
 puts response
 ```
-
-### Fetching Registered User Tokens
-
-To fetch registered user tokens, use the `appilix_registered_user_tokens` method. The `page` parameter is mandatory:
-
-```ruby
-require 'appilix_notifications'
-
-response = AppilixNotifications.appilix_registered_user_tokens(
-  'your_app_key',
-  'your_api_key',
-  1 # Page number
-)
-
-puts response
-```
-
-### Parameters for Sending Notifications
+#### Parameters for Sending Notifications
 
 - `app_key` (String): Your application's key from Appilix.
 - `api_key` (String): Your API key from Appilix.
@@ -62,15 +45,6 @@ puts response
 - `user_identity` (String, optional): The user identifier for the notification.
 - `open_link_url` (String, optional): A URL to open when the notification is clicked.
 
-### Parameters for Fetching Registered User Tokens
-
-- `app_key` (String): Your application's key from Appilix.
-- `api_key` (String): Your API key from Appilix.
-- `page` (Integer): The page number to fetch tokens from (mandatory).
-
-### Example Responses
-
-#### Sending Notifications
 
 On success, the method returns a parsed JSON response:
 
@@ -100,7 +74,29 @@ If the server response contains invalid JSON, you will receive:
 }
 ```
 
-#### Fetching Registered User Tokens
+
+### Fetching Registered User Tokens
+
+To fetch registered user tokens, use the `appilix_get_registered_user` method. The `page` parameter is mandatory:
+
+```ruby
+require 'appilix_notifications'
+
+response = AppilixNotifications.appilix_get_registered_user(
+  'your_app_key',
+  'your_api_key',
+  1 # Page number
+)
+
+puts response
+```
+
+#### Parameters for Fetching Registered User Tokens
+
+- `app_key` (String): Your application's key from Appilix.
+- `api_key` (String): Your API key from Appilix.
+- `page` (Integer): The page number to fetch tokens from (mandatory).
+
 
 On success, the method returns a parsed JSON response containing the tokens:
 
