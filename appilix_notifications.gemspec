@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-require_relative "lib/appilix_notifications/version"
+#require_relative "lib/appilix_notifications/version"
 
 Gem::Specification.new do |spec|
   spec.name = "appilix_notifications"
-  spec.version = AppilixNotifications::VERSION
+  #spec.version = AppilixNotifications::VERSION
+  spec.version = "0.1.1"
   spec.authors = ["RoaaAlqaisi"]
   spec.email = ["rowaalqaisi@gmail.com"]
+  spec.license = "NGPL"
 
   spec.summary = "A Ruby gem to send notifications using the appilix API."
   spec.description = "appilixNotifications is a Ruby gem that simplifies sending push notifications to users of your application via the appilix API. It includes functionality to fetch registered users and send notifications with customizable titles, bodies, and optional user-specific or link-specific parameters."
@@ -21,13 +23,8 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  gemspec = File.basename(__FILE__)
-  spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
-    ls.readlines("\x0", chomp: true).reject do |f|
-      (f == gemspec) ||
-        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
-    end
-  end
+  spec.files = `git ls-files -z`.split("\x0")
+
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
