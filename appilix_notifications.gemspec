@@ -5,7 +5,7 @@
 Gem::Specification.new do |spec|
   spec.name = "appilix_notifications"
   #spec.version = AppilixNotifications::VERSION
-  spec.version = "0.1.1"
+  spec.version = "0.1.2"
   spec.authors = ["RoaaAlqaisi"]
   spec.email = ["rowaalqaisi@gmail.com"]
   spec.license = "NGPL"
